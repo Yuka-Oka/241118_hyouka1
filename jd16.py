@@ -132,8 +132,8 @@ st.sidebar.markdown(
         margin-top: 5px;  /* ここで改行の幅を指定 */
     }
     </style>
-    <p class="small-text">解説が表示されたら、</p>
-    <p class="small-text">ファイル名の右の x ボタンを押してください</p>
+    <p class="small-text">ファイル名の右の x ボタンを押してから①へ</p>
+    
     """,
     unsafe_allow_html=True
 )
@@ -298,7 +298,6 @@ if uploaded_file:
     che = file_check(java_code)
 
     if (che):
-        temppp = ""
         print("お　な　じ　フ　ァ　イ　ル")
 
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
@@ -309,8 +308,8 @@ if uploaded_file:
 
         user_nyuryoku = st.session_state.code_compile
         st.session_state.code_compile += "プログラムのエラーを説明してください"
-        # sys_response = response_generation_dummy(temppp, self_sys_prompt)
-        sys_response = response_generation(temppp, self_sys_prompt)
+        # sys_response = response_generation_dummy(st.session_state.code_compile, self_sys_prompt)
+        sys_response = response_generation(st.session_state.code_compile, self_sys_prompt)
         
     else:
 
