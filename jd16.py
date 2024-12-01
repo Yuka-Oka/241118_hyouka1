@@ -5,9 +5,6 @@
 
 
 import openai
-############ requirements.txt ############
-# openai==0.28
-##########################################
 import os
 import streamlit as st
 import subprocess
@@ -48,7 +45,7 @@ custom_css = """
 # カスタムCSSを適用
 st.markdown(custom_css, unsafe_allow_html=True)
 
-st.title("エラー解説チャットボット")
+st.title("TA支援ツール")
 
 
 ############ github用 ############
@@ -78,7 +75,7 @@ if "code_compile" not in st.session_state:
     st.session_state.code_compile = []
 
 # テキストエリアを表示
-user_name = st.sidebar.text_area("名前を入力してください（仮名でいいよ）")
+user_name = st.sidebar.text_area("IDを入力してください")
 
 # "入力を保存"ボタンがクリックされたとき、入力内容をリストに追加
 if st.sidebar.button("入力を保存"):
