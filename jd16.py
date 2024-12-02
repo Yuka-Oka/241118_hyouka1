@@ -217,7 +217,7 @@ def file_jdoo(java_code_d, string_data_d_j):
             java_code_d += result['output']
             java_code_d += "\n"
 
-            nyuryoku = java_code_d
+            nyuryoku = string_data_d_j
 
             # user_prompt
             java_code_d += "プログラムのエラーを説明してください"
@@ -336,24 +336,24 @@ if uploaded_file:
     st.session_state.chat_history.append({"role": "assistant", "content": sys_response})
     st.session_state.chat_history.append({"role": "user", "content": user_nyuryoku})
 
-    append_to_file("入力：", 'memo.txt')
-    append_to_file(string_data, 'memo.txt')
-    append_to_file("プロンプト", 'memo.txt')
-    append_to_file(ppp, 'memo.txt')
-    append_to_file("解説：", 'memo.txt')
-    append_to_file(sys_response, 'memo.txt')
-    append_to_file("#############################################################", 'memo.txt')
+    # append_to_file("入力：", 'memo.txt')
+    # append_to_file(string_data, 'memo.txt')
+    # append_to_file("プロンプト", 'memo.txt')
+    # append_to_file(ppp, 'memo.txt')
+    # append_to_file("解説：", 'memo.txt')
+    # append_to_file(sys_response, 'memo.txt')
+    # append_to_file("#############################################################", 'memo.txt')
 
-    st.session_state.down_log.append("ユーザー名：")
+    st.session_state.down_log.append("ID：")
     st.session_state.down_log.append(user_name)
     st.session_state.down_log.append("")
     st.session_state.down_log.append("使用日時：")
     st.session_state.down_log.append(japan_time_str)
     st.session_state.down_log.append("")
-    st.session_state.down_log.append("入力：")
-    st.session_state.down_log.append(string_data)
+    st.session_state.down_log.append("アップロードしたファイルと発生したコンパイルエラー：")
+    st.session_state.down_log.append(user_nyuryoku)
     st.session_state.down_log.append("")
-    st.session_state.down_log.append("選択したボタン：")
+    st.session_state.down_log.append("①で選択した解説のレベル：")
     st.session_state.down_log.append(ppp)
     st.session_state.down_log.append("")
     st.session_state.down_log.append("解説：")
@@ -365,7 +365,7 @@ down_log = "\n".join(st.session_state.down_log)
 filename = safe_filename(user_name) + ".txt"
 
 st.sidebar.download_button(
-    label="これまでのやり取りをダウンロード",
+    label="履歴ダウンロード",
     data = down_log,
     file_name = filename
 )
