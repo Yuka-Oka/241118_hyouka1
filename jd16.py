@@ -78,12 +78,12 @@ if "code_compile" not in st.session_state:
 user_name = st.sidebar.text_area("IDを入力してください")
 
 # "入力を保存"ボタンがクリックされたとき、入力内容をリストに追加
-if st.sidebar.button("入力を保存"):
+if st.sidebar.button("登録"):
     if user_name:
-        st.session_state.down_log.append("ユーザー名：")
+        st.session_state.down_log.append("ID：")
         st.session_state.down_log.append(user_name)
         st.session_state.down_log.append("#############################################################")
-        st.sidebar.success("名前が保存されました")
+        st.sidebar.success("IDが登録されました")
 
 # 辞書my_dict: プロンプトを格納
 my_dict = {
@@ -116,34 +116,36 @@ st.sidebar.markdown("<h2 style='font-size: 22px;'>②Javaファイルアップ�
 # ファイルアップロード（サイドバー）
 uploaded_file = st.sidebar.file_uploader(" ", type=["java"])
 
+st.sidebar.markdown("ファイル名の右の × を押してから①へ")
 
-# サイドバーに小さい文字を表示
-st.sidebar.markdown(
-    """
-    <style>
-    .small-text {
-        font-size: 12px;  /* 必要に応じてサイズを調整 */
-        color: #333333;   /* 色も指定可能 */
-    }
-    .spaced-text {
-        margin-top: 5px;  /* ここで改行の幅を指定 */
-    }
-    </style>
-    <p class="small-text">ファイル名の右の x ボタンを押してから①へ</p>
+
+# # サイドバーに小さい文字を表示
+# st.sidebar.markdown(
+#     """
+#     <style>
+#     .small-text {
+#         font-size: 12px;  /* 必要に応じてサイズを調整 */
+#         color: #333333;   /* 色も指定可能 */
+#     }
+#     .spaced-text {
+#         margin-top: 5px;  /* ここで改行の幅を指定 */
+#     }
+#     </style>
+#     <p class="small-text">ファイル名の右の x ボタンを押してから①へ</p>
     
-    """,
-    unsafe_allow_html=True
-)
+#     """,
+#     unsafe_allow_html=True
+# )
 
 # 関数response_generation：OpenAI APIを用いて応答生成
 # 引数　error_code: コード＋エラー文、prom: システムへのプロンプト
 # 返り値　full_response: 生成した解説
 def response_generation(error_code, prom):
-    print("gpt")
+    # print("gpt")
 
     # systemプロンプト
-    print("self_sys_prompt:")
-    print(prom)
+    # print("self_sys_prompt:")
+    # print(prom)
 
     # 応答格納用変数
     full_response = ""
