@@ -51,8 +51,9 @@ def login_page():
     if login_button and user_id:
         st.session_state.logged_in = True
         st.session_state.user_id = user_id
-        st.success("ログイン成功しました！")
-        st.experimental_rerun()  # 再描画してページを切り替える
+        # st.success("ログイン成功しました！")
+        # st.experimental_rerun()  # 再描画してページを切り替える
+        st.rerun
 
 # メインページ
 def main_page():
